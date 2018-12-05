@@ -52,7 +52,6 @@ function shuffle(array) {
   return array;
 };
 
-
 // start the game by shuffling cards when page is loaded/refreshed
 document.body.onload = beginGame();
 
@@ -199,8 +198,10 @@ function congratulations() {
 
 // start playing
 function beginGame() {
+
   // shuffle deck
   cards = shuffle(cards);
+
   // remove all exisiting classes from each card
   for (var i = 0; i < cards.length; i++) {
     deck.innerHTML = "";
@@ -209,14 +210,20 @@ function beginGame() {
     });
     cards[i].classList.remove("show", "open", "match", "disabled");
   }
+
+  // reset the Opencards Array
+  openedCards = [];
+
   // reset moves
   moves = 0;
   counter.innerHTML = moves;
+
   // reset rating
   for (i = 0; i < stars.length; i++) {
     stars[i].style.color = "#FFD700";
     stars[i].style.visibility = "visible";
   }
+
   //reset timer
   let second = 0;
   let minute = 0;
